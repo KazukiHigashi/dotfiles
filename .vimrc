@@ -61,34 +61,23 @@ set hlsearch
 " ESC連打でハイライト解除
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
+if &compatible
+  set nocompatible
+endif
+set runtimepath+=~/.vim/dein/dein.vim
 
-"NeoBundle
-"---------------------------
-" Start Neobundle Settings.
-"---------------------------
-" bundleで管理するディレクトリを指定
-set runtimepath+=~/.vim/bundle/neobundle.vim/
- 
-" Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
-  
-" neobundle自体をneobundleで管理
-NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'vim-airline/vim-airline'
-NeoBundle 'vim-airline/vim-airline-themes'
+call dein#begin(expand('~/.vim/dein'))
 
-call neobundle#end()
-     
-" Required:
-filetype plugin indent on
-      
-" 未インストールのプラグインがある場合、インストールするかどうかを尋ねてくれるようにする設定
-" 毎回聞かれると邪魔な場合もあるので、この設定は任意です。
-NeoBundleCheck
-       
-"-------------------------
-" End Neobundle Settings.
-"-------------------------
+call dein#add('Shougo/dein.vim')
+call dein#add('Shougo/vimproc.vim', {'build': 'make'})
+call dein#add('Shougo/neocomplete.vim')
+call dein#add('Shougo/neomru.vim')
+call dein#add('Shougo/neosnippet')
+call dein#add('vim-airline/vim-airline')
+call dein#add('vim-airline/vim-airline-themes')
+
+call dein#end()
+
 
 let g:airline_theme = 'molokai'
 let g:airline_powerline_fonts=1
