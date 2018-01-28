@@ -1,27 +1,20 @@
-**Warning:  I will close the issue without the minimal init.vim and the reproduce ways.**
-
 # Problems summary
 
 
 ## Expected
 
 
-## Environment Information (Required!)
-
- * dein.vim version(SHA1):
-
+## Environment Information
  * OS:
-
- * Vim/neovim version:
+ * Vim version:
 
 
 ## Provide a minimal .vimrc with less than 50 lines (Required!)
 
 ```vim
 " Your minimal .vimrc
-set runtimepath^=~/path/to/dein.nvim/
-call dein#begin(path)
-call dein#end()
+set runtimepath+=~/path/to/neocomplete.nvim/
+let g:neocomplete#enable_at_startup = 1
 ```
 
 
@@ -35,4 +28,4 @@ call dein#end()
 ## Screen shot (if possible)
 
 
-## Upload the log messages by `:redir` and `:message` (if errored)
+## Upload the log messages by `:redir` and `:message`

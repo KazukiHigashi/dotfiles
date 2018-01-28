@@ -1,4 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
-let g:netrw_dirhist_1='/home/kazu'
-let g:netrw_dirhist_2='/home/kazu/Documents/pisa-iit-soft-hand/examples/adaptive_example/devel'
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/opt/ros/indigo/share/sr_description/hand'
+let g:netrw_dirhist_2='/home/higashi/catkin_ws/src/simtools_description/urdf'
+let g:netrw_dirhist_3='/home/higashi/catkin_ws/src/gazebo_ros_demos/rrbot_control/launch'
+let g:netrw_dirhist_4='/home/higashi/catkin_ws/src/cyberglove_play/launch'
+let g:netrw_dirhist_5='/home/higashi/dotfiles/.vim'

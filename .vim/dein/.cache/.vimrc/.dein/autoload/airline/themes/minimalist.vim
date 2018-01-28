@@ -2,7 +2,7 @@
 "
 " Author:       Diki Ananta <diki1aap@gmail.com>
 " Repository:   https://github.com/dikiaap/minimalist
-" Version:      1.3
+" Version:      1.4
 " License:      MIT
 
 " Normal Mode
@@ -53,12 +53,24 @@ let g:airline#themes#minimalist#palette.insert.airline_error    = g:airline#them
 let g:airline#themes#minimalist#palette.visual.airline_error    = g:airline#themes#minimalist#palette.normal.airline_error
 let g:airline#themes#minimalist#palette.replace.airline_error   = g:airline#themes#minimalist#palette.normal.airline_error
 
-" CtrlP
-if !get(g:, 'loaded_ctrlp', 0)
-  finish
-endif
+" Terminal
+let s:TE = [ '#1C1C1C' , '#3A3A3A' , 254 , 237 , '' ]
+let g:airline#themes#minimalist#palette.normal.airline_term = [
+        \ s:TE[0], s:TE[1], s:TE[2], s:TE[3]
+        \ ]
+let g:airline#themes#minimalist#palette.insert.airline_term  = g:airline#themes#minimalist#palette.normal.airline_term
+let g:airline#themes#minimalist#palette.visual.airline_term  = g:airline#themes#minimalist#palette.normal.airline_term
+let g:airline#themes#minimalist#palette.replace.airline_term = g:airline#themes#minimalist#palette.normal.airline_term
 
-let g:airline#themes#minimalist#palette.ctrlp = airline#extensions#ctrlp#generate_color_map(
-        \ [ '#E4E4E4' , '#262626' , 254 , 235 , ''     ] ,
-        \ [ '#E4E4E4' , '#4E4E4E' , 254 , 239 , ''     ] ,
-        \ [ '#585858' , '#E4E4E4' , 240 , 254 , 'bold' ] )
+" Accents
+let g:airline#themes#minimalist#palette.accents = {
+        \ 'red': [ '#D75F5F' , '' , 167 , '' ]
+        \ }
+
+" CtrlP
+if get(g:, 'loaded_ctrlp', 0)
+    let g:airline#themes#minimalist#palette.ctrlp = airline#extensions#ctrlp#generate_color_map(
+            \ [ '#E4E4E4' , '#262626' , 254 , 235 , ''     ],
+            \ [ '#E4E4E4' , '#4E4E4E' , 254 , 239 , ''     ],
+            \ [ '#585858' , '#E4E4E4' , 240 , 254 , 'bold' ])
+endif

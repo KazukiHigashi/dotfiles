@@ -75,6 +75,9 @@ call dein#add('Shougo/neomru.vim')
 call dein#add('Shougo/neosnippet')
 call dein#add('vim-airline/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
+call dein#add('taketwo/vim-ros')
+call dein#add('justmao945/vim-clang')
+
 
 call dein#end()
 
@@ -87,4 +90,5 @@ if has("mouse") " Enable the use of the mouse in all modes
   set mouse=a
 endif
 
+syntax on
 

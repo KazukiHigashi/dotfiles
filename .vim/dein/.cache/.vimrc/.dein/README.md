@@ -1,102 +1,142 @@
-## About
+Neosnippet
+==========
 
-[![Join the chat at https://gitter.im/Shougo/dein.vim](https://badges.gitter.im/Shougo/dein.vim.svg)](https://gitter.im/Shougo/dein.vim?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Build Status](https://travis-ci.org/Shougo/dein.vim.svg?branch=master)](https://travis-ci.org/Shougo/dein.vim)
+The Neosnippet plug-In adds snippet support to Vim. Snippets are
+small templates for commonly used code that you can fill in on the
+fly. To use snippets can increase your productivity in Vim a lot.
+The functionality of this plug-in is quite similar to plug-ins like
+snipMate.vim or snippetsEmu.vim. But since you can choose snippets with the
+[neocomplcache](https://github.com/Shougo/neocomplcache.vim) /
+[neocomplete](https://github.com/Shougo/neocomplete.vim) interface, you might
+have less trouble using them, because you do not have to remember each snippet
+name.
 
-Dein.vim is a dark powered Vim/Neovim plugin manager.
+Installation
+------------
 
+To install neosnippet and other Vim plug-ins it is recommended to use one of the
+popular package managers for Vim, rather than installing by drag and drop all
+required files into your `.vim` folder.
 
-## Requirements
+Notes:
 
-* Vim 7.4 or above or NeoVim.
-* "xcopy" command in $PATH (Windows)
-* "git" command in $PATH (if you want to install github or vim.org plugins)
+* Vim 7.4 or above is needed.
 
-## Quick start
+* Default snippets files are available in:
+  [neosnippet-snippets](https://github.com/Shougo/neosnippet-snippets)
+* Installing default snippets is optional. If choose not to install them,
+  you must deactivate them with `g:neosnippet#disable_runtime_snippets`.
+* neocomplcache/neocomplete is not required to use neosnippet, but it's highly recommended.
+* Extra snippets files can be found in:
+  [vim-snippets](https://github.com/honza/vim-snippets).
 
-Note: You must define the installation directory before to use dein.  It
-depends on your usage.
-For example, "\~/.vim/bundles" or "\~/.cache/dein" or "\~/.local/share/dein".
-dein.vim has not define the default installation directory.
-You must not set the installation directory under "\~/.vim/plugin" or
-"\~/.config/nvim/plugin".
+### Manual (not recommended)
 
-#### If you are using Unix/Linux or Mac OS X.
+1. Install the
+   [neocomplcache](https://github.com/Shougo/neocomplcache.vim)/
+   [neocomplete](https://github.com/Shougo/neocomplete.vim) and
+   [neosnippet-snippets](https://github.com/Shougo/neosnippet-snippets)
+   first.
+2. Put files in your Vim directory (usually `~/.vim/` or
+   `%PROGRAMFILES%/Vim/vimfiles` on Windows).
 
-Note: {directory} is just placeholder.
+### Vundle
 
-1. Run below script.
-
-     ```
-     $ curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
-     $ sh ./installer.sh {specify the installation directory}
-     ```
-
-2. Edit your .vimrc like this.
-
-    ```vim
-    if &compatible
-      set nocompatible
-    endif
-    set runtimepath+={path to dein.vim directory}
-
-    if dein#load_state({path to plugin base path directory})
-      call dein#begin({path to plugin base path directory})
-
-      call dein#add({path to dein.vim directory})
-      call dein#add('Shougo/neocomplete.vim')
-      ...
-
-      call dein#end()
-      call dein#save_state()
-    endif
-
-    filetype plugin indent on
-    syntax enable
-    ```
-
-3. Open vim and install dein
+1. Setup the [vundle](https://github.com/gmarik/vundle) package manager
+2. Set the bundles for [neocomplcache](https://github.com/Shougo/neocomplcache)
+   or [neocomplete](https://github.com/Shougo/neocomplete.vim)
+   And [neosnippet](https://github.com/Shougo/neosnippet)
+   And [neosnippet-snippets](https://github.com/Shougo/neosnippet-snippets)
 
     ```vim
-    :call dein#install()
+    Plugin 'Shougo/neocomplcache'
+    or
+    Plugin 'Shougo/neocomplete'
+
+    Plugin 'Shougo/neosnippet'
+    Plugin 'Shougo/neosnippet-snippets'
     ```
 
-## Concept
+3. Open up Vim and start installation with `:PluginInstall`
 
-* Faster than NeoBundle
+### Neobundle
 
-* Simple
+1. Setup the [neobundle](https://github.com/Shougo/neobundle.vim) package manager
+2. Set the bundles for [neocomplcache](https://github.com/Shougo/neocomplcache)
+   or [neocomplete](https://github.com/Shougo/neocomplete.vim)
+   And [neosnippet](https://github.com/Shougo/neosnippet)
+   And [neosnippet-snippets](https://github.com/Shougo/neosnippet-snippets)
 
-* No commands, Functions only to simplify the implementation
+    ```vim
+    NeoBundle 'Shougo/neocomplcache'
+    or
+    NeoBundle 'Shougo/neocomplete'
 
-* Easy to test and maintain
+    NeoBundle 'Shougo/neosnippet'
+    NeoBundle 'Shougo/neosnippet-snippets'
+    ```
 
-* No Vundle/NeoBundle compatibility
+3. Open up Vim and start installation with `:NeoBundleInstall`
 
-* neovim/Vim8 asynchronous API installation support
+### VAM (vim-addon-manager)
 
-* Local plugin support
+1. Setup the [vim-addon-manager](https://github.com/MarcWeber/vim-addon-manager)
+   package manager.
+2. Add `neosnippet` to the list of addons in your vimrc:
 
-* Non github plugins support
+    ```vim
+    call vam#ActivateAddons(['neosnippet', 'neosnippet-snippets'])
+    ```
 
-* Go like clone directory name ex:"github.com/{user}/{repository}"
+    . Installation will start automatically when you open vim next time.
 
-* Merge the plugins directories automatically to avoid long 'runtimepath'
+Configuration
+-------------
 
-## Future works (not implemented yet)
+This is an example `~/.vimrc` configuration for Neosnippet. It is assumed you
+already have Neocomplcache configured. With the settings of the example, you
+can use the following keys:
 
-* Other types support (zip, svn, hg, ...)
+* `C-k` to select-and-expand a snippet from the Neocomplcache popup (Use `C-n`
+  and `C-p` to select it). `C-k` can also be used to jump to the next field in
+  the snippet.
+* `Tab` to select the next field to fill in the snippet.
 
-* Metadata repository support
+```vim
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
 
-### Options
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
-Some common options. For a more detailed list, run `:h dein-options`
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+```
 
-| Option    | Type               | Description                                                                           |
-|-----------|--------------------|---------------------------------------------------------------------------------------|
-| `name`    | `string`           | A name for the plugin. If it is omitted, the tail of the repository name will be used |
-| `rev`     | `string`           | The revision number or branch/tag name for the repo                                   |
-| `build`   | `string`           | Command to run after the plugin is installed                                          |
-| `on_ft`   | `string` or `list` | Load a plugin for the current filetype                                                |
-| `on_cmd`  | `string` or `list` | Load the plugin for these commands                                                    |
+If you want to use a different collection of snippets than the
+built-in ones, then you can set a path to the snippets with
+the `g:neosnippet#snippets_directory` variable (e.g [Honza's
+Snippets](https://github.com/honza/vim-snippets))
+
+But if you enable `g:neosnippet#enable_snipmate_compatibility`, neosnippet will
+load snipMate snippets from runtime path automatically.
+
+```vim
+" Enable snipMate compatibility feature.
+let g:neosnippet#enable_snipmate_compatibility = 1
+
+" Tell Neosnippet about the other snippets
+let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+```
 

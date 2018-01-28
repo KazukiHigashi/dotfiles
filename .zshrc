@@ -85,7 +85,7 @@ setopt extended_glob
 bindkey '^R' history-incremental-pattern-search-backward
 ########################################
 # エイリアス
-alias ls='ls -a'
+alias la='ls -a'
 alias ll='ls -l'
 alias rm='rm -i'
 alias cp='cp -i'
@@ -128,3 +128,5 @@ esac
 [[ -z "$TMUX" && ! -z "$PS1" ]] && tmux2
 
 source /opt/ros/indigo/setup.zsh
+
+source /home/higashi/catkin_ws/devel/setup.zsh
