@@ -13,6 +13,10 @@ bindkey -e
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
+# history search
+bindkey '^P' history-beginning-search-backward
+bindkey '^N' history-beginning-search-forward
+
 # プロンプト
 # 1行表示
 # PROMPT="%~ %# "
@@ -129,4 +133,4 @@ esac
 
 source /opt/ros/indigo/setup.zsh
 
-source /home/higashi/catkin_ws/devel/setup.zsh
+source /home/higashi/workspace/devel/setup.zsh
